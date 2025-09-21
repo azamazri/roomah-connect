@@ -26,21 +26,21 @@ export default function Footer() {
             <nav className="flex flex-col space-y-2">
               <Link 
                 to="/" 
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors focus-ring rounded-md px-1 py-1"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                Beranda
+                BERANDA
               </Link>
               <Link 
                 to="/tentang" 
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors focus-ring rounded-md px-1 py-1"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                Tentang
+                TENTANG
               </Link>
               <Link 
                 to="/kontak" 
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors focus-ring rounded-md px-1 py-1"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                Kontak
+                KONTAK
               </Link>
             </nav>
           </div>
@@ -51,13 +51,13 @@ export default function Footer() {
             <nav className="flex flex-col space-y-2">
               <Link 
                 to="/privacy" 
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors focus-ring rounded-md px-1 py-1"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 Kebijakan Privasi
               </Link>
               <Link 
                 to="/terms" 
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors focus-ring rounded-md px-1 py-1"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 Syarat & Ketentuan
               </Link>

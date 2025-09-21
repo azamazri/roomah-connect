@@ -6,8 +6,8 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-surface/80 backdrop-blur-sm">
       <div className="container flex h-16 items-center justify-between px-4">
         {/* Brand */}
-        <Link to="/" className="flex items-center gap-2 font-semibold text-lg focus-ring rounded-md p-1">
-          <div className="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground text-sm font-bold">
+        <Link to="/" className="flex items-center gap-2 font-semibold text-lg">
+          <div className="flex items-center justify-center w-8 h-8 bg-primary text-primary-foreground text-sm font-bold">
             R
           </div>
           <span className="text-foreground">Roomah</span>
@@ -17,21 +17,21 @@ export default function Header() {
         <nav role="navigation" aria-label="Navigasi utama" className="hidden md:flex items-center gap-6">
           <Link 
             to="/" 
-            className="text-sm font-medium text-foreground hover:text-primary transition-colors focus-ring rounded-md px-2 py-1"
+            className="text-sm font-medium text-foreground hover:text-primary transition-colors px-2 py-1"
           >
-            Beranda
+            BERANDA
           </Link>
           <Link 
             to="/tentang" 
-            className="text-sm font-medium text-foreground hover:text-primary transition-colors focus-ring rounded-md px-2 py-1"
+            className="text-sm font-medium text-foreground hover:text-primary transition-colors px-2 py-1"
           >
-            Tentang
+            TENTANG
           </Link>
           <Link 
             to="/kontak" 
-            className="text-sm font-medium text-foreground hover:text-primary transition-colors focus-ring rounded-md px-2 py-1"
+            className="text-sm font-medium text-foreground hover:text-primary transition-colors px-2 py-1"
           >
-            Kontak
+            KONTAK
           </Link>
         </nav>
 
