@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Roomah — Style Guide (Tema Hijau Elegan) • Single HTML Demo</title>
+
+    <!-- Inter font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind Play CDN (no build step) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Tailwind config (light-only, map to CSS tokens)
+      tailwind.config = {
+        darkMode: false,
+        theme: {
+          container: {
+            center: true,
+            padding: "2rem",
+            screens: { "2xl": "1400px" },
+          },
+          extend: {
+            colors: {
+              border: "hsl(var(--border))",
+              input: "hsl(var(--input))",
+              ring: "hsl(var(--ring))",
+              background: "hsl(var(--background))",
+              foreground: "hsl(var(--foreground))",
+              primary: {
+                DEFAULT: "hsl(var(--primary))",
+                foreground: "hsl(var(--primary-foreground))",
+              },
+              secondary: {
+                DEFAULT: "hsl(var(--secondary))",
+                foreground: "hsl(var(--secondary-foreground))",
+              },
+              destructive: {
+                DEFAULT: "hsl(var(--destructive))",
+                foreground: "hsl(var(--destructive-foreground))",
+              },
+              muted: {
+                DEFAULT: "hsl(var(--muted))",
+                foreground: "hsl(var(--muted-foreground))",
+              },
+              accent: {
+                DEFAULT: "hsl(var(--accent))",
+                foreground: "hsl(var(--accent-foreground))",
+              },
+              popover: {
+                DEFAULT: "hsl(var(--popover))",
+                foreground: "hsl(var(--popover-foreground))",
+              },
+              card: {
+                DEFAULT: "hsl(var(--card))",
+                foreground: "hsl(var(--card-foreground))",
+              },
+              success: {
+                DEFAULT: "hsl(var(--success))",
+                foreground: "hsl(var(--success-foreground))",
+              },
+              warning: {
+                DEFAULT: "hsl(var(--warning))",
+                foreground: "hsl(var(--warning-foreground))",
+              },
+              info: {
+                DEFAULT: "hsl(var(--info))",
+                foreground: "hsl(var(--info-foreground))",
+              },
+              link: {
+                DEFAULT: "hsl(var(--link))",
+                foreground: "hsl(var(--link-foreground))",
+              },
+              sidebar: {
+                DEFAULT: "hsl(var(--sidebar))",
+                foreground: "hsl(var(--sidebar-foreground))",
+              },
+              surface: {
+                1: "hsl(var(--surface-1))",
+                2: "hsl(var(--surface-2))",
+              },
+              chart: {
+                1: "hsl(var(--chart-1))",
+                2: "hsl(var(--chart-2))",
+                3: "hsl(var(--chart-3))",
+                4: "hsl(var(--chart-4))",
+                5: "hsl(var(--chart-5))",
+              },
+            },
+            borderRadius: { lg: "1rem", md: "0.75rem", sm: "0.375rem" },
+            fontFamily: {
+              sans: [
+                "Inter",
+                "system-ui",
+                "-apple-system",
+                "BlinkMacSystemFont",
+                "sans-serif",
+              ],
+              heading: [
+                "Inter",
+                "system-ui",
+                "-apple-system",
+                "BlinkMacSystemFont",
+                "sans-serif",
+              ],
+            },
+          },
+        },
+        corePlugins: { preflight: true },
+      };
+    </script>
+
+    <style>
+      /* =====================
+         3) DESIGN TOKENS (HSL)
+         ===================== */
+      :root {
+        /* Primary - Hijau Elegan Utama */
+        --primary: 155 45% 35%;
+        --primary-foreground: 0 0% 98%;
+
+        /* Secondary - Aksen Emas Lembut */
+        --secondary: 42 45% 88%;
+        --secondary-foreground: 155 45% 25%;
+
+        /* Accent - Cyan Sejuk */
+        --accent: 185 35% 85%;
+        --accent-foreground: 155 55% 20%;
+
+        /* Background - Minted White Lembut */
+        --background: 100 22% 97%;
+        --foreground: 155 15% 15%;
+
+        /* Surface */
+        --surface-1: 155 20% 95%;
+        --surface-2: 155 15% 92%;
+
+        /* Muted */
+        --muted: 155 15% 96%;
+        --muted-foreground: 155 8% 45%;
+
+        /* Card */
+        --card: 0 0% 100%;
+        --card-foreground: 155 15% 15%;
+
+        /* Popover */
+        --popover: 0 0% 100%;
+        --popover-foreground: 155 15% 15%;
+
+        /* Border & Input */
+        --border: 155 20% 88%;
+        --input: 155 20% 88%;
+
+        /* Ring focus */
+        --ring: 155 45% 35%;
+
+        /* Link */
+        --link: 155 55% 30%;
+        --link-foreground: 155 15% 15%;
+
+        /* Sidebar */
+        --sidebar: 155 20% 95%;
+        --sidebar-foreground: 155 15% 15%;
+
+        /* Destructive */
+        --destructive: 0 65% 55%;
+        --destructive-foreground: 0 0% 98%;
+
+        /* Status */
+        --success: 145 60% 45%;
+        --success-foreground: 0 0% 98%;
+        --warning: 45 85% 55%;
+        --warning-foreground: 155 45% 15%;
+        --info: 200 45% 55%;
+        --info-foreground: 0 0% 98%;
+
+        /* Gradients */
+        --hero-from: 155 45% 35%;
+        --hero-to: 185 35% 85%;
+        --footer-from: 155 15% 96%;
+        --footer-to: 155 20% 88%;
+
+        /* Charts */
+        --chart-1: 155 45% 35%;
+        --chart-2: 185 35% 85%;
+        --chart-3: 42 45% 88%;
+        --chart-4: 145 60% 45%;
+        --chart-5: 200 45% 55%;
+      }
+
+      /* 5) Setup Global (tanpa @layer, langsung CSS agar jalan di satu file) */
+      * {
+        border-color: hsl(var(--border));
+      }
+      html {
+        font-feature-settings: "rlig" 1, "calt" 1;
+      }
+      body {
+        background: hsl(var(--background));
+        color: hsl(var(--foreground));
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont,
+          sans-serif;
+      }
+      ::selection {
+        background: color-mix(in hsl, hsl(var(--primary)) 20%, transparent);
+      }
+      /* Scrollbar (WebKit) */
+      ::-webkit-scrollbar {
+        width: 0.5rem;
+        height: 0.5rem;
+      }
+      ::-webkit-scrollbar-track {
+        background: hsl(var(--muted));
+      }
+      ::-webkit-scrollbar-thumb {
+        background: color-mix(
+          in hsl,
+          hsl(var(--muted-foreground)) 20%,
+          transparent
+        );
+        border-radius: 0.25rem;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: color-mix(
+          in hsl,
+          hsl(var(--muted-foreground)) 30%,
+          transparent
+        );
+      }
+
+      /* Utility helpers not covered by CDN config */
+      .bg-hero-gradient {
+        background-image: linear-gradient(
+          135deg,
+          hsl(var(--hero-from)),
+          hsl(var(--hero-to))
+        );
+      }
+      .bg-footer-gradient {
+        background-image: linear-gradient(
+          180deg,
+          hsl(var(--footer-from)),
+          hsl(var(--footer-to))
+        );
+      }
+      .shadow-soft {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      }
+      .focus-ring {
+        outline: none;
+        box-shadow: 0 0 0 2px hsl(var(--ring));
+      }
+      .visually-hidden {
+        position: absolute !important;
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+        clip: rect(1px, 1px, 1px, 1px);
+        white-space: nowrap;
+      }
+
+      /* Simple modal base */
+      .modal-backdrop {
+        background: rgba(0, 0, 0, 0.5);
+      }
+      .modal[aria-hidden="true"] {
+        display: none;
+      }
+
+      /* Tooltip */
+      .tooltip {
+        transform: translate(-50%, -6px);
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen">
+    <a
+      href="#konten"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:bg-primary focus:text-primary-foreground focus:px-3 focus:py-2 focus:rounded-md"
+      >Lewati ke Konten</a
+    >
+
+    <!-- HERO -->
+    <header class="bg-hero-gradient border-b">
+      <div
+        class="container py-12 lg:py-16 flex flex-col lg:flex-row gap-8 items-center"
+      >
+        <div class="flex-1">
+          <div
+            class="inline-flex items-center gap-2 rounded-full bg-secondary text-secondary-foreground px-3 py-1 text-xs border"
+          >
+            <span class="h-2 w-2 rounded-full bg-success inline-block"></span>
+            MVP Production — Tema Hijau Elegan
+          </div>
+          <h1 class="mt-4 text-3xl lg:text-5xl font-semibold text-foreground">
+            Roomah • Style Guide & Live Preview
+          </h1>
+          <p class="mt-3 max-w-2xl text-foreground/80">
+            Semantic-first, aksesibilitas WCAG AA, performa gambar, dan PII-safe
+            error handling—disatukan dalam satu file HTML untuk inspeksi cepat.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <button
+              class="inline-flex items-center justify-center rounded-lg h-11 px-5 bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            >
+              Primary Action
+            </button>
+            <button
+              class="inline-flex items-center justify-center rounded-lg h-11 px-5 border border-input bg-background hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            >
+              Outline
+            </button>
+            <a
+              href="#warna"
+              class="inline-flex items-center justify-center rounded-lg h-11 px-5 bg-secondary text-secondary-foreground hover:bg-secondary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              >Lihat Palet Warna</a
+            >
+          </div>
+        </div>
+        <!-- Sidebar demo tile -->
+        <aside
+          class="w-full lg:w-[380px] bg-sidebar text-sidebar-foreground rounded-xl border shadow-soft"
+        >
+          <div class="p-4 border-b flex items-center justify-between">
+            <strong class="font-semibold">Contoh Sidebar</strong>
+            <span class="text-xs text-muted-foreground">Aksesibilitas OK</span>
+          </div>
+          <nav class="p-4 space-y-1 text-sm">
+            <a
+              class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-accent hover:text-accent-foreground"
+              href="#"
+              >Dashboard
+              <span class="text-xs text-muted-foreground">⌘1</span></a
+            >
+            <a
+              class="flex items-center justify-between px-3 py-2 rounded-md bg-surface-1"
+              href="#"
+              >CV Saya <span class="text-xs text-muted-foreground">⌘2</span></a
+            >
+            <a
+              class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-accent hover:text-accent-foreground"
+              href="#"
+              >Koin <span class="text-xs text-muted-foreground">⌘3</span></a
+            >
+            <a
+              class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-accent hover:text-accent-foreground"
+              href="#"
+              >Riwayat Ta'aruf
+              <span class="text-xs text-muted-foreground">⌘4</span></a
+            >
+          </nav>
+        </aside>
+      </div>
+    </header>
+
+    <main id="konten" class="container space-y-16 py-10">
+      <!-- 1) Identitas & Prinsip ringkas -->
+      <section aria-labelledby="prinsip">
+        <h2 id="prinsip" class="text-2xl font-semibold">
+          Identitas Visual & Prinsip
+        </h2>
+        <div class="mt-4 grid md:grid-cols-2 gap-6">
+          <ul class="space-y-2 text-sm">
+            <li>
+              ✅ <strong>Semantic-first</strong> — semua warna via CSS variables
+              HSL → utilitas Tailwind.
+            </li>
+            <li>
+              ✅ <strong>WCAG AA</strong> — fokus terlihat, keyboard-friendly,
+              ARIA proper.
+            </li>
+            <li>
+              ✅ <strong>Performa gambar</strong> — batas ukuran avatar &
+              upload.
+            </li>
+            <li>
+              ✅ <strong>PII-safe error</strong> — kode + pesan generik +
+              X-Request-ID.
+            </li>
+            <li>
+              ✅ <strong>Modern & profesional</strong> — nyaman, soft, hierarki
+              jelas.
+            </li>
+          </ul>
+          <div
+            class="rounded-xl border bg-card text-card-foreground p-4 shadow-soft"
+          >
+            <p class="text-sm">
+              <span class="font-medium">Filosofi Warna:</span> Ketenangan,
+              pertumbuhan, kepercayaan, kesejukan.
+            </p>
+            <div class="mt-3 flex gap-2">
+              <span
+                class="h-8 w-8 rounded-md"
+                style="background: hsl(var(--primary))"
+                title="Primary"
+              ></span>
+              <span
+                class="h-8 w-8 rounded-md"
+                style="background: hsl(var(--secondary))"
+                title="Secondary"
+              ></span>
+              <span
+                class="h-8 w-8 rounded-md"
+                style="background: hsl(var(--accent))"
+                title="Accent"
+              ></span>
+              <span
+                class="h-8 w-8 rounded-md"
+                style="background: hsl(var(--success))"
+                title="Success"
+              ></span>
+              <span
+                class="h-8 w-8 rounded-md"
+                style="background: hsl(var(--warning))"
+                title="Warning"
+              ></span>
+              <span
+                class="h-8 w-8 rounded-md"
+                style="background: hsl(var(--info))"
+                title="Info"
+              ></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2) Palet Warna lengkap -->
+      <section id="warna" aria-labelledby="warna-title">
+        <h2 id="warna-title" class="text-2xl font-semibold">
+          Sistem Warna (HSL Tokens)
+        </h2>
+        <div
+          class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+        >
+          <!-- Helper function is visual only: we render swatches via inline styles -->
+          <div class="rounded-lg border overflow-hidden">
+            <div class="p-4 bg-primary text-primary-foreground">primary</div>
+            <div class="p-4 grid grid-cols-2 gap-2 text-sm">
+              <div
+                class="h-8 rounded-md"
+                style="background: hsl(var(--primary))"
+              ></div>
+              <div
+                class="h-8 rounded-md border"
+                style="background: hsl(var(--primary-foreground))"
+              ></div>
+            </div>
+          </div>
+          <div class="rounded-lg border overflow-hidden">
+            <div class="p-4 bg-secondary text-secondary-foreground">
+              secondary
+            </div>
+            <div class="p-4 grid grid-cols-2 gap-2 text-sm">
+              <div
+                class="h-8 rounded-md"
+                style="background: hsl(var(--secondary))"
+              ></div>
+              <div
+                class="h-8 rounded-md border"
+                style="background: hsl(var(--secondary-foreground))"
+              ></div>
+            </div>
+          </div>
+          <div class="rounded-lg border overflow-hidden">
+            <div class="p-4 bg-accent text-accent-foreground">accent</div>
+            <div class="p-4 grid grid-cols-2 gap-2 text-sm">
+              <div
+                class="h-8 rounded-md"
+                style="background: hsl(var(--accent))"
+              ></div>
+              <div
+                class="h-8 rounded-md border"
+                style="background: hsl(var(--accent-foreground))"
+              ></div>
+            </div>
+          </div>
+          <div class="rounded-lg border overflow-hidden">
+            <div class="p-4 bg-success text-success-foreground">success</div>
+            <div class="p-4 grid grid-cols-2 gap-2 text-sm">
+              <div
+                class="h-8 rounded-md"
+                style="background: hsl(var(--success))"
+              ></div>
+              <div
+                class="h-8 rounded-md border"
+                style="background: hsl(var(--success-foreground))"
+              ></div>
+            </div>
+          </div>
+          <div class="rounded-lg border overflow-hidden">
+            <div class="p-4 bg-warning text-warning-foreground">warning</div>
+            <div class="p-4 grid grid-cols-2 gap-2 text-sm">
+              <div
+                class="h-8 rounded-md"
+                style="background: hsl(var(--warning))"
+              ></div>
+              <div
+                class="h-8 rounded-md border"
+                style="background: hsl(var(--warning-foreground))"
+              ></div>
+            </div>
+          </div>
+          <div class="rounded-lg border overflow-hidden">
+            <div class="p-4 bg-info text-info-foreground">info</div>
+            <div class="p-4 grid grid-cols-2 gap-2 text-sm">
+              <div
+                class="h-8 rounded-md"
+                style="background: hsl(var(--info))"
+              ></div>
+              <div
+                class="h-8 rounded-md border"
+                style="background: hsl(var(--info-foreground))"
+              ></div>
+            </div>
+          </div>
+          <div class="rounded-lg border overflow-hidden">
+            <div class="p-4 bg-link text-background">link</div>
+            <div class="p-4 grid grid-cols-2 gap-2 text-sm">
+              <div
+                class="h-8 rounded-md"
+                style="background: hsl(var(--link))"
+              ></div>
+              <div
+                class="h-8 rounded-md border"
+                style="background: hsl(var(--link-foreground))"
+              ></div>
+            </div>
+          </div>
+          <div class="rounded-lg border overflow-hidden">
+            <div class="p-4 bg-destructive text-destructive-foreground">
+              destructive
+            </div>
+            <div class="p-4 grid grid-cols-2 gap-2 text-sm">
+              <div
+                class="h-8 rounded-md"
+                style="background: hsl(var(--destructive))"
+              ></div>
+              <div
+                class="h-8 rounded-md border"
+                style="background: hsl(var(--destructive-foreground))"
+              ></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Link & text contrast sample -->
+        <div class="mt-6 rounded-xl border p-5 bg-card text-card-foreground">
+          <p class="text-sm">
+            Contoh link:
+            <a
+              href="#"
+              class="text-link underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              >Kebijakan Privasi</a
+            >
+            — Kontras teks utama terjaga.
+          </p>
+        </div>
+      </section>
+
+      <!-- 3) Komponen: Button / Badge / Input / Card -->
+      <section aria-labelledby="komponen">
+        <h2 id="komponen" class="text-2xl font-semibold">Komponen UI</h2>
+        <div class="mt-6 grid lg:grid-cols-2 gap-6">
+          <!-- Buttons -->
+          <div class="rounded-lg border bg-card p-5 shadow-soft">
+            <h3 class="font-semibold">Buttons</h3>
+            <div class="mt-4 flex flex-wrap gap-3">
+              <button
+                class="h-10 px-4 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              >
+                Default
+              </button>
+              <button
+                class="h-10 px-4 rounded-lg bg-destructive text-destructive-foreground hover:bg-destructive/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              >
+                Destructive
+              </button>
+              <button
+                class="h-10 px-4 rounded-lg border border-input bg-background hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              >
+                Outline
+              </button>
+              <button
+                class="h-10 px-4 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80"
+              >
+                Secondary
+              </button>
+              <button
+                class="h-10 px-4 rounded-lg hover:bg-accent hover:text-accent-foreground"
+              >
+                Ghost
+              </button>
+              <button
+                class="h-10 px-4 rounded-lg text-link underline-offset-4 hover:underline"
+              >
+                Link
+              </button>
+              <button
+                class="h-10 px-4 rounded-lg bg-success text-success-foreground hover:bg-success/90"
+              >
+                Success
+              </button>
+              <button
+                class="h-10 px-4 rounded-lg bg-warning text-warning-foreground hover:bg-warning/90"
+              >
+                Warning
+              </button>
+              <button
+                class="h-10 px-4 rounded-lg bg-info text-info-foreground hover:bg-info/90"
+              >
+                Info
+              </button>
+            </div>
+          </div>
+
+          <!-- Badges & Inputs -->
+          <div class="rounded-lg border bg-card p-5 shadow-soft">
+            <h3 class="font-semibold">Badges & Inputs</h3>
+            <div class="mt-4 flex flex-wrap gap-2 items-center">
+              <span
+                class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-primary text-primary-foreground"
+                >default</span
+              >
+              <span
+                class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-secondary text-secondary-foreground"
+                >secondary</span
+              >
+              <span
+                class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-success text-success-foreground"
+                >success</span
+              >
+              <span
+                class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-warning text-warning-foreground"
+                >warning</span
+              >
+              <span
+                class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-info text-info-foreground"
+                >info</span
+              >
+              <span
+                class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-destructive text-destructive-foreground"
+                >destructive</span
+              >
+            </div>
+
+            <div class="mt-5 grid sm:grid-cols-2 gap-4">
+              <label class="text-sm"
+                >Input normal
+                <input
+                  type="text"
+                  placeholder="Ketik di sini"
+                  class="mt-1 flex h-10 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                />
+              </label>
+              <label class="text-sm"
+                >Input error (aria)
+                <input
+                  aria-invalid="true"
+                  type="text"
+                  placeholder="Ada error"
+                  class="mt-1 flex h-10 w-full rounded-lg border bg-background px-3 py-2 text-sm placeholder:text-muted-foreground border-destructive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive focus-visible:ring-offset-2"
+                />
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card sample -->
+        <div class="mt-6 grid gap-6 lg:grid-cols-3">
+          <div
+            class="rounded-lg border bg-card text-card-foreground shadow-soft"
+          >
+            <div class="p-6 border-b">
+              <h3 class="text-2xl font-semibold">Card Title</h3>
+            </div>
+            <div class="p-6 pt-4 text-sm text-muted-foreground">
+              Konten card dengan border halus, bayangan lembut, dan tipografi
+              nyaman.
+            </div>
+          </div>
+          <div
+            class="rounded-lg border bg-card text-card-foreground shadow-soft"
+          >
+            <div class="p-6 border-b">
+              <h3 class="text-2xl font-semibold">Card Hover</h3>
+            </div>
+            <div class="p-6 pt-4 text-sm text-muted-foreground">
+              Tambahkan <code>hover:shadow-md</code> dan
+              <code>cursor-pointer</code> untuk interaktivitas.
+            </div>
+          </div>
+          <div
+            class="rounded-lg border bg-card text-card-foreground shadow-soft"
+          >
+            <div class="p-6 border-b">
+              <h3 class="text-2xl font-semibold">Popover/Modal Base</h3>
+            </div>
+            <div class="p-6 pt-4 text-sm text-muted-foreground">
+              Gunakan token <code>popover</code> untuk konten overlay.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4) Modal, Error PII-safe, Loading/Empty -->
+      <section aria-labelledby="states">
+        <h2 id="states" class="text-2xl font-semibold">
+          Modal, Error, Loading & Empty States
+        </h2>
+        <div class="mt-6 grid lg:grid-cols-2 gap-6">
+          <!-- Modal demo -->
+          <div class="rounded-lg border bg-card p-5 shadow-soft">
+            <h3 class="font-semibold">Modal & Focus</h3>
+            <p class="mt-2 text-sm text-muted-foreground">
+              Modal menggunakan <code>aria-modal</code>,
+              <code>role="dialog"</code>, dan trap fokus sederhana.
+            </p>
+            <button
+              id="openModalBtn"
+              class="mt-4 h-10 px-4 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            >
+              Buka Modal
+            </button>
+          </div>
+
+          <!-- Error PII-Safe -->
+          <div class="rounded-lg border bg-card p-5 shadow-soft">
+            <h3 class="font-semibold">PII-Safe Error</h3>
+            <div
+              id="errorBox"
+              class="mt-4 rounded-lg border border-destructive/20 bg-destructive/5 p-4"
+            >
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 text-destructive" aria-hidden="true">
+                  ⚠️
+                </div>
+                <div class="min-w-0 flex-1">
+                  <p class="text-sm font-medium text-destructive">
+                    Pembayaran tidak dapat diproses saat ini
+                  </p>
+                  <p
+                    id="errorMeta"
+                    class="mt-1 text-xs text-muted-foreground font-mono"
+                  >
+                    Kode: PAYMENT_002 | ID: <span id="reqId">—</span>
+                  </p>
+                </div>
+              </div>
+              <p class="mt-3 text-xs text-muted-foreground">
+                Jika masalah berlanjut, hubungi dukungan dan sertakan ID
+                permintaan di atas.
+              </p>
+              <button
+                id="regenId"
+                class="mt-3 text-xs underline text-link hover:opacity-80"
+              >
+                Regenerate Request ID
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Loading / Empty -->
+        <div class="mt-6 grid lg:grid-cols-2 gap-6">
+          <div class="rounded-lg border bg-card p-5 shadow-soft">
+            <h3 class="font-semibold">Loading Skeleton & Spinner</h3>
+            <div class="mt-4 space-y-3" id="skeletonArea">
+              <div class="animate-pulse bg-muted rounded h-4 w-1/3"></div>
+              <div class="animate-pulse bg-muted rounded h-3 w-1/2"></div>
+              <div class="animate-pulse bg-muted rounded h-3 w-2/3"></div>
+            </div>
+            <div class="mt-4">
+              <div
+                class="animate-spin rounded-full border-2 border-muted border-t-primary h-8 w-8"
+              ></div>
+            </div>
+            <button
+              id="toggleSkeleton"
+              class="mt-4 h-9 px-3 rounded-lg border border-input hover:bg-accent hover:text-accent-foreground"
+            >
+              Toggle Skeleton
+            </button>
+          </div>
+
+          <div class="rounded-lg border bg-card p-5 shadow-soft">
+            <h3 class="font-semibold">Empty State</h3>
+            <div class="text-center py-10">
+              <div
+                class="mx-auto h-12 w-12 text-muted-foreground mb-3"
+                aria-hidden="true"
+              >
+                🔎
+              </div>
+              <h4 class="text-lg font-medium">Belum Ada Kandidat</h4>
+              <p class="text-sm text-muted-foreground max-w-sm mx-auto">
+                Saat ini belum ada kandidat yang sesuai dengan kriteria
+                pencarian.
+              </p>
+              <button
+                class="mt-4 h-10 px-4 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90"
+              >
+                Reset Filter
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5) Candidate Card + Guards + Tooltip -->
+      <section aria-labelledby="candidate">
+        <h2 id="candidate" class="text-2xl font-semibold">
+          Candidate Card & Guard Tooltips
+        </h2>
+        <div class="mt-4 grid lg:grid-cols-[320px_1fr] gap-6">
+          <div class="rounded-lg border bg-card p-4 shadow-soft">
+            <h3 class="font-semibold">Simulasi Guards</h3>
+            <div class="mt-3 space-y-2 text-sm">
+              <label class="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  id="g-user"
+                  class="text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                />
+                User login
+              </label>
+              <label class="flex items-center gap-2">
+                <input type="checkbox" id="g-cv" class="text-primary" />
+                CV disetujui admin
+              </label>
+              <label class="flex items-center gap-2">
+                <input type="checkbox" id="g-active" class="text-primary" />
+                Ada ta'aruf aktif (blokir)
+              </label>
+              <label class="flex items-center gap-2">
+                Koin:
+                <input
+                  id="g-koin"
+                  type="number"
+                  value="10"
+                  class="h-9 w-24 rounded-lg border border-input bg-background px-2 text-sm"
+                />
+              </label>
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-6">
+            <!-- Candidate Card -->
+            <div
+              class="rounded-lg border bg-card text-card-foreground shadow-soft p-4"
+            >
+              <div class="flex items-start gap-4">
+                <!-- Avatar placeholder (SVG) -->
+                <div
+                  class="h-16 w-16 rounded-full bg-muted flex items-center justify-center border-2 border-muted shrink-0"
+                  aria-hidden="true"
+                >
+                  <svg
+                    width="28"
+                    height="28"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    class="text-muted-foreground"
+                  >
+                    <circle cx="12" cy="8" r="4" />
+                    <path d="M4 20c0-4 4-6 8-6s8 2 8 6" />
+                  </svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-2 mb-1">
+                    <span class="font-mono text-sm font-medium text-primary"
+                      >RMH-0213</span
+                    >
+                    <span
+                      class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-semibold bg-secondary text-secondary-foreground"
+                      >24 tahun</span
+                    >
+                  </div>
+                  <p class="text-sm text-muted-foreground mb-1">
+                    Analis Data • S1 Informatika
+                  </p>
+                  <p class="text-sm">DIY, Sleman</p>
+                </div>
+              </div>
+              <div class="mt-4 flex justify-between items-center relative">
+                <span
+                  class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-semibold bg-success text-success-foreground"
+                  >Tersedia</span
+                >
+                <div class="group relative">
+                  <button
+                    id="btnTaaruf"
+                    class="h-9 px-4 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50 disabled:pointer-events-none"
+                  >
+                    Ajukan Ta'aruf
+                  </button>
+                  <div
+                    id="tooltipTaaruf"
+                    class="tooltip pointer-events-none absolute bottom-full left-1/2 mb-2 px-3 py-2 text-xs text-white bg-black/80 rounded opacity-0 group-hover:opacity-100 whitespace-nowrap"
+                  >
+                    —
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Transaction History coloring -->
+            <div
+              class="rounded-lg border bg-card text-card-foreground shadow-soft p-4"
+            >
+              <h3 class="font-semibold mb-3">Riwayat Transaksi</h3>
+              <div class="space-y-3 text-sm">
+                <div class="flex items-center justify-between py-2 border-b">
+                  <div>
+                    <p class="font-medium">Top-up Koin</p>
+                    <p class="text-muted-foreground">20/09/2025</p>
+                  </div>
+                  <div class="text-right">
+                    <p class="font-medium text-success">+100 Koin</p>
+                    <p class="text-xs text-muted-foreground">SETTLED</p>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between py-2 border-b">
+                  <div>
+                    <p class="font-medium">Ajukan Ta'aruf</p>
+                    <p class="text-muted-foreground">19/09/2025</p>
+                  </div>
+                  <div class="text-right">
+                    <p class="font-medium text-destructive">-50 Koin</p>
+                    <p class="text-xs text-muted-foreground">SUCCESS</p>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between py-2">
+                  <div>
+                    <p class="font-medium">Refund Parsial</p>
+                    <p class="text-muted-foreground">18/09/2025</p>
+                  </div>
+                  <div class="text-right">
+                    <p class="font-medium text-warning">+10 Koin</p>
+                    <p class="text-xs text-muted-foreground">PENDING</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6) Onboarding 5Q (radio + modal negatif) -->
+      <section aria-labelledby="onboarding">
+        <h2 id="onboarding" class="text-2xl font-semibold">
+          Onboarding 5Q — ARIA & Negative Flow
+        </h2>
+        <form class="mt-4 grid lg:grid-cols-2 gap-6" onsubmit="return false">
+          <div class="rounded-lg border bg-card p-5 shadow-soft">
+            <fieldset class="space-y-5">
+              <legend class="font-medium mb-2">
+                Jawab pertanyaan berikut:
+              </legend>
+              <!-- Q1 -->
+              <div>
+                <label class="text-sm font-medium"
+                  >1. Siap mengikuti proses ta'aruf secara serius?</label
+                >
+                <div class="mt-2 flex gap-6">
+                  <label class="flex items-center gap-2 text-sm"
+                    ><input
+                      type="radio"
+                      name="q1"
+                      value="true"
+                      class="text-primary"
+                    />
+                    Ya</label
+                  >
+                  <label class="flex items-center gap-2 text-sm"
+                    ><input
+                      type="radio"
+                      name="q1"
+                      value="false"
+                      class="text-primary"
+                    />
+                    Tidak</label
+                  >
+                </div>
+                <p class="hidden text-sm text-destructive mt-1" data-error="q1">
+                  Wajib memilih salah satu.
+                </p>
+              </div>
+              <!-- Q2 -->
+              <div>
+                <label class="text-sm font-medium"
+                  >2. Bersedia melengkapi CV sesuai ketentuan?</label
+                >
+                <div class="mt-2 flex gap-6">
+                  <label class="flex items-center gap-2 text-sm"
+                    ><input
+                      type="radio"
+                      name="q2"
+                      value="true"
+                      class="text-primary"
+                    />
+                    Ya</label
+                  >
+                  <label class="flex items-center gap-2 text-sm"
+                    ><input
+                      type="radio"
+                      name="q2"
+                      value="false"
+                      class="text-primary"
+                    />
+                    Tidak</label
+                  >
+                </div>
+                <p class="hidden text-sm text-destructive mt-1" data-error="q2">
+                  Wajib memilih salah satu.
+                </p>
+              </div>
+            </fieldset>
+            <div class="mt-4 flex gap-3">
+              <button
+                id="submit5Q"
+                class="h-10 px-4 rounded-lg bg-primary text-primary-foreground"
+              >
+                Simpan
+              </button>
+              <button
+                class="h-10 px-4 rounded-lg border border-input hover:bg-accent hover:text-accent-foreground"
+              >
+                Lewati
+              </button>
+            </div>
+          </div>
+
+          <!-- Image Upload (validasi ukuran & tipe) -->
+          <div class="rounded-lg border bg-card p-5 shadow-soft">
+            <h3 class="font-semibold">Upload Avatar (≤1MB, JPEG/PNG/WebP)</h3>
+            <div class="mt-4 grid grid-cols-[96px_1fr] gap-4 items-start">
+              <div
+                id="avatarPreview"
+                class="h-24 w-24 rounded-full bg-muted border flex items-center justify-center text-muted-foreground"
+              >
+                SVG
+              </div>
+              <div>
+                <label class="relative inline-flex">
+                  <input
+                    id="fileInput"
+                    type="file"
+                    accept="image/jpeg,image/png,image/webp"
+                    class="absolute inset-0 opacity-0 cursor-pointer"
+                  />
+                  <span
+                    class="h-10 px-4 rounded-lg border border-input bg-background hover:bg-accent hover:text-accent-foreground inline-flex items-center"
+                    >Upload Foto</span
+                  >
+                </label>
+                <p id="uploadMsg" class="mt-2 text-xs text-muted-foreground">
+                  Pilih file untuk melihat validasi.
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <!-- 7) Charts palette preview (visual only) -->
+      <section aria-labelledby="charts">
+        <h2 id="charts" class="text-2xl font-semibold">
+          Chart Colors (Preview)
+        </h2>
+        <div class="mt-4 rounded-lg border bg-card p-5 shadow-soft">
+          <div
+            class="grid sm:grid-cols-5 gap-3 text-sm items-end"
+            style="height: 120px"
+          >
+            <div class="bg-chart-1 rounded-md h-[60%]"></div>
+            <div class="bg-chart-2 rounded-md h-[30%]"></div>
+            <div class="bg-chart-3 rounded-md h-[45%]"></div>
+            <div class="bg-chart-4 rounded-md h-[80%]"></div>
+            <div class="bg-chart-5 rounded-md h-[55%]"></div>
+          </div>
+          <p class="mt-3 text-xs text-muted-foreground">
+            Gunakan sebagai pedoman warna di lib chart (Recharts/dsb).
+          </p>
+        </div>
+      </section>
+
+      <!-- 8) Checklist DoD Visual -->
+      <section aria-labelledby="checklist">
+        <h2 id="checklist" class="text-2xl font-semibold">
+          Checklist DoD Visual
+        </h2>
+        <div
+          class="mt-4 rounded-lg border bg-card p-5 shadow-soft grid md:grid-cols-2 gap-6"
+        >
+          <ul class="text-sm space-y-2">
+            <li>☑️ HSL tokens dari satu sumber (<code>:root</code>).</li>
+            <li>☑️ Tidak ada hex literal pada komponen.</li>
+            <li>☑️ Background minted white (bukan putih polos).</li>
+            <li>☑️ Fokus terlihat (ring-ring).</li>
+            <li>☑️ Kontras teks aman.</li>
+          </ul>
+          <ul class="text-sm space-y-2">
+            <li>☑️ Loading & Empty states tersedia.</li>
+            <li>☑️ Error PII-safe + Request ID.</li>
+            <li>☑️ Grid responsif tanpa overflow.</li>
+            <li>☑️ Tipografi Inter + spacing konsisten.</li>
+            <li>☑️ Komponen tombol & badge semantic.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="mt-16 border-t bg-footer-gradient">
+      <div
+        class="container py-10 flex flex-col sm:flex-row items-center justify-between gap-4"
+      >
+        <p class="text-sm text-muted-foreground">
+          © 2025 Roomah — Tema Hijau Elegan
+        </p>
+        <nav class="flex gap-4 text-sm">
+          <a class="text-link underline-offset-4 hover:underline" href="#"
+            >Kebijakan</a
+          >
+          <a class="text-link underline-offset-4 hover:underline" href="#"
+            >Syarat</a
+          >
+          <a class="text-link underline-offset-4 hover:underline" href="#"
+            >Bantuan</a
+          >
+        </nav>
+      </div>
+    </footer>
+
+    <!-- MOBILE NAV (preview) -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-card border-t lg:hidden">
+      <div class="flex items-center justify-around py-2 text-sm">
+        <a
+          href="#"
+          class="px-3 py-2 hover:bg-accent hover:text-accent-foreground rounded-md"
+          >Cari</a
+        >
+        <a
+          href="#"
+          class="px-3 py-2 hover:bg-accent hover:text-accent-foreground rounded-md"
+          >CV Saya</a
+        >
+        <a
+          href="#"
+          class="px-3 py-2 hover:bg-accent hover:text-accent-foreground rounded-md"
+          >Ta'aruf</a
+        >
+        <a
+          href="#"
+          class="px-3 py-2 hover:bg-accent hover:text-accent-foreground rounded-md"
+          >Koin</a
+        >
+      </div>
+    </nav>
+
+    <!-- MODAL (reusable) -->
+    <div
+      id="modal"
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+      aria-hidden="true"
+    >
+      <div class="fixed inset-0 z-40 modal-backdrop" data-close="true"></div>
+      <div class="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div
+          class="max-w-lg w-full mx-auto bg-popover text-popover-foreground rounded-lg border shadow-soft"
+        >
+          <div class="flex items-center justify-between p-6 border-b">
+            <h2 id="modalTitle" class="text-lg font-semibold">
+              Konfirmasi Keseriusan
+            </h2>
+            <button
+              class="rounded-sm opacity-70 hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              data-close="true"
+              aria-label="Tutup"
+            >
+              ×
+            </button>
+          </div>
+          <div class="p-6 space-y-4">
+            <p class="text-sm text-muted-foreground">
+              Anda menjawab "Tidak" pada verifikasi. Yakin ingin melanjutkan?
+            </p>
+            <div class="flex gap-3">
+              <button
+                class="flex-1 h-10 rounded-lg border border-input hover:bg-accent hover:text-accent-foreground"
+                data-close="true"
+              >
+                Lanjutkan
+              </button>
+              <button
+                class="flex-1 h-10 rounded-lg bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                onclick="location.href='/'"
+              >
+                Batal
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // ========= Helpers =========
+      const el = (sel, root = document) => root.querySelector(sel);
+      const els = (sel, root = document) =>
+        Array.from(root.querySelectorAll(sel));
+
+      // Request ID generator (8 hex)
+      const genReqId = () =>
+        [...crypto.getRandomValues(new Uint8Array(8))]
+          .map((b) => b.toString(16).padStart(2, "0"))
+          .join("");
+
+      // Init Request ID
+      const reqSpan = el("#reqId");
+      const regenBtn = el("#regenId");
+      const setReqId = () => {
+        if (reqSpan) reqSpan.textContent = genReqId().slice(0, 8) + "...";
+      };
+      setReqId();
+      regenBtn?.addEventListener("click", setReqId);
+
+      // Toggle skeleton content
+      const skelArea = el("#skeletonArea");
+      el("#toggleSkeleton")?.addEventListener("click", () => {
+        if (!skelArea) return;
+        skelArea.classList.toggle("hidden");
+      });
+
+      // Guards for Ajukan Ta'aruf
+      const state = { user: false, cv: false, active: false, koin: 10 };
+      const btnTaaruf = el("#btnTaaruf");
+      const tooltip = el("#tooltipTaaruf");
+      const recompute = () => {
+        const can = state.user && state.cv && state.koin >= 50 && !state.active;
+        btnTaaruf.disabled = !can;
+        let msg = "";
+        if (!state.user) msg = "Harus login terlebih dahulu";
+        else if (!state.cv) msg = "CV harus disetujui admin";
+        else if (state.koin < 50) msg = "Koin tidak mencukupi (≥50)";
+        else if (state.active) msg = "Selesaikan ta'aruf yang berjalan";
+        tooltip.textContent = msg || "";
+        tooltip.classList.toggle("opacity-0", can);
+      };
+      ["#g-user", "#g-cv", "#g-active"].forEach((id, i) => {
+        el(id)?.addEventListener("change", (e) => {
+          const map = ["user", "cv", "active"];
+          state[map[i]] = e.target.checked;
+          recompute();
+        });
+      });
+      el("#g-koin")?.addEventListener("input", (e) => {
+        state.koin = Number(e.target.value || 0);
+        recompute();
+      });
+      recompute();
+
+      // File upload validation
+      const fileInput = el("#fileInput");
+      const avatarPreview = el("#avatarPreview");
+      const uploadMsg = el("#uploadMsg");
+      fileInput?.addEventListener("change", (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        const allowed = ["image/jpeg", "image/png", "image/webp"];
+        if (!allowed.includes(file.type)) {
+          uploadMsg.textContent = "Format harus JPEG/PNG/WebP";
+          uploadMsg.className = "mt-2 text-xs text-destructive";
+          e.target.value = "";
+          return;
+        }
+        const max = 1024 * 1024; // 1MB
+        if (file.size > max) {
+          uploadMsg.textContent = "Ukuran file maksimal 1MB";
+          uploadMsg.className = "mt-2 text-xs text-destructive";
+          e.target.value = "";
+          return;
+        }
+        const url = URL.createObjectURL(file);
+        avatarPreview.innerHTML = "";
+        avatarPreview.style.background = `url(${url}) center/cover no-repeat`;
+        avatarPreview.setAttribute("aria-label", "Avatar preview");
+        uploadMsg.textContent = `OK • ${(file.size / 1024).toFixed(0)} KB`;
+        uploadMsg.className = "mt-2 text-xs text-success";
+      });
+
+      // Modal logic (reused for 5Q negative answers)
+      const modal = el("#modal");
+      const openModal = () => {
+        modal?.setAttribute("aria-hidden", "false");
+        trapFocus(modal);
+      };
+      const closeModal = () => {
+        modal?.setAttribute("aria-hidden", "true");
+        releaseFocus();
+      };
+      el("#openModalBtn")?.addEventListener("click", openModal);
+      modal?.addEventListener("click", (e) => {
+        if (e.target.dataset.close !== undefined) closeModal();
+      });
+      modal?.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeModal();
+      });
+
+      // 5Q negative auto-open
+      els('input[type="radio"]').forEach((r) => {
+        r.addEventListener("change", (e) => {
+          if (e.target.value === "false") openModal();
+        });
+      });
+
+      // Simple focus trap
+      let lastFocused = null;
+      function trapFocus(container) {
+        lastFocused = document.activeElement;
+        const f = focusables(container);
+        if (f.length) f[0].focus();
+        container.addEventListener("keydown", cycleTab);
+      }
+      function releaseFocus() {
+        modal.removeEventListener("keydown", cycleTab);
+        lastFocused?.focus?.();
+      }
+      function focusables(root) {
+        return els(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+          root
+        ).filter((x) => !x.hasAttribute("disabled"));
+      }
+      function cycleTab(e) {
+        if (e.key !== "Tab") return;
+        const f = focusables(modal);
+        if (!f.length) return;
+        const i = f.indexOf(document.activeElement);
+        if (e.shiftKey) {
+          if (i <= 0) {
+            f[f.length - 1].focus();
+            e.preventDefault();
+          }
+        } else {
+          if (i === f.length - 1) {
+            f[0].focus();
+            e.preventDefault();
+          }
+        }
+      }
+
+      // 5Q submit validation example
+      el("#submit5Q")?.addEventListener("click", () => {
+        ["q1", "q2"].forEach((id) => {
+          const chosen = el(`input[name="${id}"]:checked`);
+          const err = el(`[data-error="${id}"]`);
+          if (!chosen) {
+            err.classList.remove("hidden");
+          } else {
+            err.classList.add("hidden");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
